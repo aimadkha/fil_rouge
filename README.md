@@ -9,9 +9,9 @@ communicate with each others.
 
 ## the 'FindBooks' Platform also offers:
 USER SIDE :
-The main purpose of this books platform is to help readers community to read,to discover last books versions, meet people who have the same interest, engage in meanghful discussion and make the User Experience worth Time and Efforts.
+The main purpose of this books platform is to help readers community to read,to discover last books versions, meet people who have the same interest, engage in meanghful discussion and make the User Experience worth Time and Efforts..
 
-## The second prupose is to let users can sell and exhange book between them , that means the user can create his store dashboard and manage it so he can sell and exhange books . And at the same time , the user can access to a global page of the news about the books and the community of readers like a normal user.
+The second prupose is to let users can sell and exhange book between them , that means the user can create his store dashboard and manage it so he can sell and exhange books . And at the same time , the user can access to a global page of the news about the books and the community of readers like a normal user.
 
 ## ADMINISTRATORS SIDE :
 Administrator can confirm stores created by users.
