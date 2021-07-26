@@ -24,10 +24,10 @@
                 <tr>
                     <td>{{$category->name}}</td>
                     <td>{{$category->slug}}</td>
-                    <td><span class="status delevered">{{$category->active}}</span></td>
+                    <td><img src="{{$category->photo}}" class="w-25"></td>
                     <td>
-                        <button class="btn btn-success">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <a href="{{route('admin.maincategories.edit',$category->id)}}"><button class="btn btn-success">Edit</button></a>
+                        <a href="{{ route('admin.maincategories.delete', $category->id)}}"><button class="btn btn-danger">Delete</button></a>
                     </td>
                 </tr>
                     @endforeach

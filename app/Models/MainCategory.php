@@ -33,6 +33,10 @@ class MainCategory extends Model
         return $query->select('id','name','slug','photo','active');
     }
 
+    public function getPhotoAttribute($val){
+        return ($val !== null) ? asset('assets/'. $val) : "";
+    }
+
     public function getActive(){
         $this->active == 1 ? "active" : "not active";
     }

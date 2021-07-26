@@ -1,4 +1,3 @@
-
 <div class="navigation">
     <ul>
         <li>
@@ -30,17 +29,17 @@
         <li>
             <a href="#">
               <span class="icon"
-              ><i class="fa fa-user" aria-hidden="true"></i
-                  ></span>
-                <span class="title">Customers</span>
+              ><i class="fa fa-shopping-bag" aria-hidden="true"></i>
+</span>
+                <span class="title">Store</span>
             </a>
         </li>
         <li>
             <a href="#">
               <span class="icon"
-              ><i class="fa fa-comment-o" aria-hidden="true"></i
+              ><i class="fa fa-user" aria-hidden="true"></i
                   ></span>
-                <span class="title">Message</span>
+                <span class="title">Customers</span>
             </a>
         </li>
         <li>

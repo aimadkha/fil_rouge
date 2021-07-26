@@ -19,10 +19,28 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\admin','middl
     ######################### Begin Main Categoris Routes ########################
     Route::group(['prefix'=>'main_categories'], function(){
         Route::get('/', 'MainCategoriesController@index')->name('admin.maincategories');
-        Route::get('/create', 'MainCategoriesController@create')->name('admin.maincategories.create');
+        Route::get('create', 'MainCategoriesController@create')->name('admin.maincategories.create');
+        Route::post('store', 'MainCategoriesController@store')->name('admin.maincategories.stor');
+        Route::get('edit/{id}', 'MainCategoriesController@edit')->name('admin.maincategories.edit');
+        Route::post('update/{id}', 'MainCategoriesController@update')->name('admin.maincategories.update');
+        Route::get('delete/{id}', 'MainCategoriesController@destroy')->name('admin.maincategories.delete');
+
     });
 
     ######################### end Main Categoris Routes ########################
+
+    ######################### Begin Vendors Routes ########################
+    Route::group(['prefix'=>'vendor'], function(){
+        Route::get('/', 'MainCategoriesController@index')->name('admin.maincategories');
+        Route::get('create', 'MainCategoriesController@create')->name('admin.maincategories.create');
+        Route::post('store', 'MainCategoriesController@store')->name('admin.maincategories.stor');
+        Route::get('edit/{id}', 'MainCategoriesController@edit')->name('admin.maincategories.edit');
+        Route::post('update/{id}', 'MainCategoriesController@update')->name('admin.maincategories.update');
+        Route::get('delete/{id}', 'MainCategoriesController@destroy')->name('admin.maincategories.delete');
+
+    });
+
+    ######################### end vendors Routes ########################
 });
 
 

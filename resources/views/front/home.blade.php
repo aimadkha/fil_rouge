@@ -42,7 +42,7 @@
         </div>
         <div class="col50">
             <div class="imgBx">
-                <img src="images/about.svg" alt="">
+                <img src="../../../public/assets/images/about.svg" alt="">
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@
     <div class="content">
         <div class="box">
             <div class="imgBx">
-                <img src="images/about.svg" alt="">
+                <img src="../../../public/assets/images/about.svg" alt="">
             </div>
             <div class="text">
                 <h3>Special Offer</h3>
@@ -66,7 +66,7 @@
         </div>
         <div class="box">
             <div class="imgBx">
-                <img src="images/about.svg" alt="">
+                <img src="../../../public/assets/images/about.svg" alt="">
             </div>
             <div class="text">
                 <h3>Special Offer</h3>
@@ -74,7 +74,7 @@
         </div>
         <div class="box">
             <div class="imgBx">
-                <img src="images/about.svg" alt="">
+                <img src="../../../public/assets/images/about.svg" alt="">
             </div>
             <div class="text">
                 <h3>Special Offer</h3>
@@ -82,7 +82,7 @@
         </div>
         <div class="box">
             <div class="imgBx">
-                <img src="images/about.svg" alt="">
+                <img src="../../../public/assets/images/about.svg" alt="">
             </div>
             <div class="text">
                 <h3>Special Offer</h3>
@@ -90,7 +90,7 @@
         </div>
         <div class="box">
             <div class="imgBx">
-                <img src="images/about.svg" alt="">
+                <img src="../../../public/assets/images/about.svg" alt="">
             </div>
             <div class="text">
                 <h3>Special Offer</h3>
@@ -98,7 +98,7 @@
         </div>
         <div class="box">
             <div class="imgBx">
-                <img src="images/about.svg" alt="">
+                <img src="../../../public/assets/images/about.svg" alt="">
             </div>
             <div class="text">
                 <h3>Special Offer</h3>

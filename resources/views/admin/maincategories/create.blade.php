@@ -6,28 +6,45 @@
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Main Categories</h2>
-                <a href="{{ route('admin.maincategories') }}" class="btnn">Back to main Category</a>
+                <a href="{{route('admin.maincategories') }}" class="btnn">Back to main Category</a>
             </div>
             <div class="container">
-                <form>
+                <form class="form" action="{{route('admin.maincategories.stor')}}" method="post"
+                      enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Category Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        <label for="name">Category Name</label>
+                        <input type="text" name="name" class="form-control" id="name"
                                placeholder="Enter name">
+                        @error('name')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Slug</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1">
+                        <label for="slug">Slug</label>
+                        <input type="text" name="slug" class="form-control" id="slug">
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Photo</label>
-                        <input type="file" class="form-control" id="exampleInputPassword1">
+                        <label for="photo">Photo</label>
+                        <input type="file" class="form-control" name="photo" id="photo">
+                        @error('photo')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group form-check">
                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
                         <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-warning mr-1"
+                                onclick="history.back();">
+                            <i class="ft-x"></i> back
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="la la-check-square-o"></i> Submit
+                        </button>
+                    </div>
+
                 </form>
             </div>
         </div>
