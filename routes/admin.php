@@ -17,6 +17,7 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\admin','middl
 
 
     ######################### Begin Main Categoris Routes ########################
+
     Route::group(['prefix'=>'main_categories'], function(){
         Route::get('/', 'MainCategoriesController@index')->name('admin.maincategories');
         Route::get('create', 'MainCategoriesController@create')->name('admin.maincategories.create');
@@ -30,14 +31,14 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\admin','middl
     ######################### end Main Categoris Routes ########################
 
     ######################### Begin Vendors Routes ########################
-    Route::group(['prefix'=>'vendor'], function(){
-        Route::get('/', 'MainCategoriesController@index')->name('admin.maincategories');
-        Route::get('create', 'MainCategoriesController@create')->name('admin.maincategories.create');
-        Route::post('store', 'MainCategoriesController@store')->name('admin.maincategories.stor');
-        Route::get('edit/{id}', 'MainCategoriesController@edit')->name('admin.maincategories.edit');
-        Route::post('update/{id}', 'MainCategoriesController@update')->name('admin.maincategories.update');
-        Route::get('delete/{id}', 'MainCategoriesController@destroy')->name('admin.maincategories.delete');
 
+    Route::group(['prefix'=>'vendors'], function(){
+        Route::get('/', 'VendorController@index')->name('admin.vendors');
+        Route::get('create', 'VendorController@create')->name('admin.vendors.create');
+        Route::post('store', 'VendorController@store')->name('admin.vendors.store');
+        Route::get('edit/{id}', 'VendorController@edit')->name('admin.vendors.edit');
+        Route::post('update/{id}', 'VendorController@update')->name('admin.vendors.update');
+        Route::get('delete/{id}', 'VendorController@destroy')->name('admin.vendors.delete');
     });
 
     ######################### end vendors Routes ########################

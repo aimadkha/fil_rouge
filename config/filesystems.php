@@ -38,12 +38,18 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
         'maincategories' => [
             'driver' => 'local',
             'root' => public_path() . '/assets/images/maincategories/',
+            'url' => env('APP_URL') . '/public',
+            'visibility' => 'public',
+        ],
+        'vendors' => [
+            'driver' => 'local',
+            'root' => public_path() . '/assets/images/vendors/',
             'url' => env('APP_URL') . '/public',
             'visibility' => 'public',
         ],

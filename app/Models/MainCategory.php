@@ -41,4 +41,8 @@ class MainCategory extends Model
         $this->active == 1 ? "active" : "not active";
     }
 
+    public function vendors(){
+        return $this->hasMany('App/Models/Vendors', 'category_id');
+    }
+
 }

@@ -27,7 +27,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{ route('admin.vendors') }}">
               <span class="icon"
               ><i class="fa fa-shopping-bag" aria-hidden="true"></i>
 </span>

@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\Models\Vendor;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,20 +12,22 @@ class VenderCreated extends Notification
 {
     use Queueable;
 
+    public $vendor;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Vendor $vendor)
     {
-        //
+        $this->vendor = $vendor;
     }
 
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -35,21 +38,26 @@ class VenderCreated extends Notification
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
+        $subject = sprintf('%s:your account was set up %s!', config(key: 'app.name'), 'aimad');
+        $greeting = sprintf('Welcome %s!', $notifiable->name);
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject($subject)
+            ->greeting($greeting)
+            ->salutation('Yours Faithfully')
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**
      * Get the array representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      * @return array
      */
     public function toArray($notifiable)
