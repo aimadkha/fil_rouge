@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MainCategoryRequest;
 use App\Models\MainCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Mockery\Exception;
 
 
@@ -128,11 +129,14 @@ class MainCategoriesController extends Controller
             if (!$mainCategory){
                 return redirect()->route('admin.maincategories')->with(['error'=>'this category not found']);
             }
+            $image = Str::after($mainCategory->photo, 'assets/');
+            $image = base_path('public/assets/'. $image);
+            unlink($image);  // delete photo from folder
             $mainCategory->delete();
             return redirect()->route('admin.maincategories')->with(['success'=>'updated successfuly']);
 
         } catch (\Exception $exception){
-
+            return $exception;
         }
 
     }
