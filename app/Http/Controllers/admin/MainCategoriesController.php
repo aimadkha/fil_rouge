@@ -136,7 +136,7 @@ class MainCategoriesController extends Controller
             return redirect()->route('admin.maincategories')->with(['success'=>'updated successfuly']);
 
         } catch (\Exception $exception){
-            return $exception;
+
         }
 
     }
