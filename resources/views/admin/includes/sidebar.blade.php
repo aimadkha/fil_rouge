@@ -53,9 +53,8 @@
         <li>
             <a href="#"
             ><span class="icon"
-                ><i class="fa fa-question-circle" aria-hidden="true"></i
-                    ></span>
-                <span class="title">Help</span></a
+                ><i class="fa fa-product-hunt" aria-hidden="true"></i></span>
+                <span class="title">Product</span></a
             >
         </li>
         <li>

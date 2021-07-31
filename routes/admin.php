@@ -43,6 +43,19 @@ Route::group(['prefix'=>'admin','namespace'=>'App\Http\Controllers\admin','middl
 
     ######################### end vendors Routes ########################
 
+    ######################### Begin Product Routes ########################
+
+    Route::group(['prefix'=>'products'], function(){
+        Route::get('/', 'ProductController@index')->name('admin.products');
+        Route::get('create', 'ProductController@create')->name('admin.products.create');
+        Route::post('store', 'ProductController@store')->name('admin.products.store');
+        Route::get('edit/{id}', 'ProductController@edit')->name('admin.products.edit');
+        Route::post('update/{id}', 'ProductController@update')->name('admin.products.update');
+        Route::get('delete/{id}', 'ProductController@destroy')->name('admin.products.delete');
+    });
+
+    ######################### end product Routes ########################
+
     ######################### Begin Sub Categoris Routes ########################
 
     Route::group(['prefix'=>'sub_categories'], function(){
