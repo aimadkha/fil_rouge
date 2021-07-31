@@ -35,4 +35,8 @@ class SubCategory extends Model
     public function getActive(){
         $this->active == 1 ? "active" : "not active";
     }
+
+    public function mainCategory(){
+        return $this->belongsTo(MainCategory::class, 'category_id');
+    }
 }

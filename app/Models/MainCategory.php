@@ -42,7 +42,12 @@ class MainCategory extends Model
     }
 
     public function vendors(){
-        return $this->hasMany('App/Models/Vendors', 'category_id');
+        return $this->hasMany('App/Models/Vendors', 'category_id','id');
+    }
+
+
+    public function subCategories(){
+        return $this->hasMany(SubCategory::class, 'category_id','id');
     }
 
 }
