@@ -3,10 +3,10 @@
         <li>
             <a href="#">
               <span class="icon"
-              ><i class="fa fa-apple" aria-hidden="true"></i
-                  ></span>
+              ><i class="fa fa-book" aria-hidden="true"></i>
+</span>
                 <span class="title">
-                <h2>Brand Name</h2>
+                    <h2>BooKs.</h2>
               </span>
             </a>
         </li>
@@ -24,6 +24,14 @@
                   <i class="fa fa-building" aria-hidden="true"></i>
               </span>
                 <span class="title">Main Category</span>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.subcategories') }}">
+              <span class="icon">
+                  <i class="fa fa-level-down" aria-hidden="true"></i>
+              </span>
+                <span class="title">sub Category</span>
             </a>
         </li>
         <li>
