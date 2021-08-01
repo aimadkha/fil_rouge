@@ -82,9 +82,12 @@ class VendorController extends Controller
                     'logo' => $filePath
                 ]);
             }
-            $data=[];
+
             if ($request->has('password')) {
-                $data['password'] = $request->password;
+                Vendor::where('id', $id)->update([
+                    'password' => $request->password,
+                ]);
+
             }
 
             Vendor::where('id', $id)->update([
