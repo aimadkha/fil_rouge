@@ -34,8 +34,8 @@
                     <td>{{$product->product_price}}</td>
                     <td>{{$product->product_type}}</td>
                     <td>
-                        <a href="{{route('admin.maincategories.edit',$product->id)}}"><button class="btn btn-success">Edit</button></a>
-                        <a href="{{ route('admin.maincategories.delete', $product->id)}}"><button class="btn btn-danger">Delete</button></a>
+                        <a href="{{route('admin.products.edit',$product->id)}}"><button class="btn btn-success">Edit</button></a>
+                        <a href="{{ route('admin.products.delete', $product->id)}}"><button class="btn btn-danger">Delete</button></a>
                     </td>
                 </tr>
                     @endforeach

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -52,7 +53,6 @@ class ProductController extends Controller
                 'product_price'=>$request->price,
                 'product_category'=>$request->category,
                 'product_pub_date'=>$request->pub_date,
-
             ]);
             return redirect()->route('admin.products')->with(['success'=>'registred successufly']);
 
@@ -83,7 +83,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        if (!$product){
+            return redirect()->route('admin.products')->with(['error'=>'product not found']);
+        }
+        return view('admin.products.edit', ['product'=>$product]);
     }
 
     /**
@@ -93,9 +97,39 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductRequest $request, $id)
     {
-        //
+        try {
+            $product = Product::find($id);
+            if (!$product){
+                return redirect()->route('admin.products')->with(['error'=>'product not found']);
+            }
+            DB::beginTransaction();
+
+            Product::where('id', $id)->update([
+                'product_name'=>$request->name,
+                'product_author'=>$request->author,
+                'product_type'=>$request->type,
+                'product_price'=>$request->price,
+                'product_category'=>$request->category,
+                'product_pub_date'=>$request->pub_date,
+            ]);
+
+            if ($request->has('photo')){
+                $filePath = uploadImage('products', $request->photo);
+                Product::where('id', $id)->update([
+                    'product_img'=>$filePath
+                ]);
+            }
+
+            DB::commit();
+            return redirect()->route('admin.products')->with(['success'=>'updated successufly']);
+        } catch (\Exception $exception){
+            DB::rollBack();
+            return redirect()->route('admin.products.edit')->with(['error'=>'update failed! try again']);
+
+        }
+
     }
 
     /**
