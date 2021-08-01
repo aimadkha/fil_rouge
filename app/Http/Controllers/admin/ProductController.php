@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductRequest;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +16,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::selection()->paginate(10);
+        return view('admin.products.index', ['products'=>$products]);
     }
 
     /**
@@ -24,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create');
     }
 
     /**
@@ -33,9 +36,32 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        //
+//        return $request;
+        try {
+            $filePath="";
+            if ($request->has('photo')){
+                $filePath = uploadImage('products', $request->photo);
+            }
+            Product::create([
+                'product_name'=>$request->name,
+                'product_img'=>$filePath,
+                'product_author'=>$request->author,
+                'product_type'=>$request->type,
+                'product_price'=>$request->price,
+                'product_category'=>$request->category,
+                'product_pub_date'=>$request->pub_date,
+
+            ]);
+            return redirect()->route('admin.products')->with(['success'=>'registred successufly']);
+
+
+        } catch (\Exception $exception){
+            return $exception;
+            return redirect()->route('admin.products.create')->with(['error'=>'registred failed! try again']);
+
+        }
     }
 
     /**

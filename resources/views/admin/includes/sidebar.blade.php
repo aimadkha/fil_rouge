@@ -51,7 +51,7 @@
             </a>
         </li>
         <li>
-            <a href="#"
+            <a href="{{route('admin.products')}}"
             ><span class="icon"
                 ><i class="fa fa-product-hunt" aria-hidden="true"></i></span>
                 <span class="title">Product</span></a
