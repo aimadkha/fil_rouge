@@ -121,7 +121,7 @@ class VendorController extends Controller
             return redirect()->route('admin.vendors')->with(['success'=>'deleted successfuly']);
 
         } catch (\Exception $exception){
-            return $exception;
+//            return $exception;
         }
 
     }

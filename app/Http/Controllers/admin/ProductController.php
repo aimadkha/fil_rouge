@@ -7,6 +7,7 @@ use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -140,6 +141,14 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        if (!$product){
+            return redirect()->route('admin.products')->with(['error'=>'product not found']);
+        }
+        $image = Str::after($product->product_img, 'assets');
+        $image = base_path('public/assets' . $image);
+        unlink($image);
+        $product->delete();
+        return redirect()->route('admin.products')->with(['success'=>'deleted successfuly']);
     }
 }
