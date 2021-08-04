@@ -27,11 +27,11 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('admin.subcategories') }}">
+            <a href="#">
               <span class="icon">
-                  <i class="fa fa-level-down" aria-hidden="true"></i>
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
               </span>
-                <span class="title">sub Category</span>
+                <span class="title">Shopping Cart</span>
             </a>
         </li>
         <li>
@@ -74,13 +74,13 @@
             </a>
         </li>
         <li>
-            <a href="{{route('logout')}}">
+            <a href="{{route('user.logedout')}}">
               <span class="icon"
               ><i class="fa fa-sign-out" aria-hidden="true"></i
                   ></span>
                 <span class="title">Sign Out</span>
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            <form id="logout-form" action="{{route('user.logedout')}}" method="post" class="d-none">
                 @csrf
             </form>
         </li>

@@ -82,9 +82,12 @@ class VendorController extends Controller
                     'logo' => $filePath
                 ]);
             }
-            $data=[];
+
             if ($request->has('password')) {
-                $data['password'] = $request->password;
+                Vendor::where('id', $id)->update([
+                    'password' => $request->password,
+                ]);
+
             }
 
             Vendor::where('id', $id)->update([
@@ -118,7 +121,7 @@ class VendorController extends Controller
             return redirect()->route('admin.vendors')->with(['success'=>'deleted successfuly']);
 
         } catch (\Exception $exception){
-            return $exception;
+//            return $exception;
         }
 
     }
