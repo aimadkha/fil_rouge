@@ -15,19 +15,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $products = \App\Models\Product::selection()->get();
-    return view('front.home', ['products'=>$products]);
+    return view('front.home', ['products' => $products]);
 });
 
-Route::group(['prefix'=>'site'], function () {
-    Route::group(['middleware'=>'auth:web','namespace'=>'App\Http\Controllers\User'], function(){
-        Route::get('profile','UserController@index')->name('profile');
+Route::group(['prefix' => 'site', 'middleware'=>'auth:web'], function () {
+    Route::group(['middleware' => 'auth', 'namespace' => 'App\Http\Controllers\User'], function () {
+        Route::get('profile', 'DashboardController@index')->name('user.profile');
+        Route::get('logedout', 'DashboardController@logout')->name('user.logedout');
     });
-    Route::group(['middleware'=>'guest:web', 'namespace'=>'App\Http\Controllers\Auth'], function(){
-        Route::get('login', 'LoginController@getLogin')->name('login');
-        Route::post('login', 'LoginController@login')->name('post.login');
-    });
+
 });
 
-Auth::routes();
+Route::group(['prefix' => 'site', 'middleware' => 'guest:web', 'namespace' => 'App\Http\Controllers\User'], function () {
+    Route::get('getLogin', 'LoginController@getLogin')->name('get.user.login');
+    Route::post('login', 'LoginController@login')->name('user.login');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
+
+//Auth::routes();
+
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

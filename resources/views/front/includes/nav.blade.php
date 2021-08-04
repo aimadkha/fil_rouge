@@ -5,7 +5,6 @@
         <li><a href="#about">About</a></li>
         <li><a href="#menu">Menu</a></li>
         <li><a href="#expert">Expert</a></li>
-        <li><a href="#testimonial">testimonoial</a></li>
-        <li><a href="{{route('login')}}">Compte</a></li>
+        <li><a href="{{route('get.user.login')}}"><i class="fa fa-user" aria-hidden="true"></i> Account</a></li>
     </ul>
 </header>

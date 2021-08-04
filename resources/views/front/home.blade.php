@@ -32,6 +32,11 @@
                             <span class="card-author">{{$product->product_author}}</span>
                         </p>
                         <p class="card-text">{{$product->product_price}}<span> DH</span></p>
+                        <p>
+                            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                Add to Cart</a><br>
+                            <a href="#">Order Now</a>
+                        </p>
                     </div>
                 </div>
                     @endforeach

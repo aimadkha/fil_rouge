@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{{ asset('css/home.css')}}" />
     <link rel="stylesheet" href="{{ asset('css/card.css')}}" />
+    <script src="https://use.fontawesome.com/ce85b01e63.js"></script>
     <title>landing page</title>
 </head>
 <body>
