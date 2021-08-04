@@ -4,20 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
 
-class MainCategory extends Model
+class SubCategory extends Model
 {
+    use HasFactory;
 
-    use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
+        'parent_id',
         'photo',
         'slug',
         'active',
@@ -30,7 +25,7 @@ class MainCategory extends Model
     }
 
     public function scopeSelection($query){
-        return $query->select('id','name','slug','photo','active');
+        return $query->select('id','parent_id','name','slug','photo','active');
     }
 
     public function getPhotoAttribute($val){
@@ -41,13 +36,7 @@ class MainCategory extends Model
         $this->active == 1 ? "active" : "not active";
     }
 
-    public function vendors(){
-        return $this->hasMany('App/Models/Vendors', 'category_id','id');
+    public function mainCategory(){
+        return $this->belongsTo(MainCategory::class, 'category_id');
     }
-
-
-    public function subCategories(){
-        return $this->hasMany(SubCategory::class, 'category_id','id');
-    }
-
 }
