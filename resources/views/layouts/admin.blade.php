@@ -20,12 +20,24 @@
 
     <div class="main">
 
-@include('admin.includes.header')
+        @include('admin.includes.header')
+        <div class="container w-50">
+            @if(session('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{session('error')}}
+                </div>
+            @endif
+            @if(session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{session('success')}}
+                </div>
+            @endif
+        </div>
 
-@yield('content')
+        @yield('content')
 
 
-@include('admin.includes.footer')
+        @include('admin.includes.footer')
     </div>
 </div>
 <script src="{{ asset('js/dashboard.js')}}"></script>

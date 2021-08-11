@@ -56,7 +56,7 @@ class MainCategoriesController extends Controller
                 'photo' => $filePath,
                 'active' => '1'
             ]);
-            return redirect()->route('admin.maincategories')->with(['success'=>'registred successufly']);
+            return redirect()->route('admin.maincategories')->with(['success'=>'added successufly']);
         } catch (\Exception $e){
             return redirect()->route('admin.maincategories')->with(['error'=>'registred failed! try again']);
         }
@@ -133,7 +133,7 @@ class MainCategoriesController extends Controller
             $image = base_path('public/assets/'. $image);
             unlink($image);  // delete photo from folder
             $mainCategory->delete();
-            return redirect()->route('admin.maincategories')->with(['success'=>'updated successfuly']);
+            return redirect()->route('admin.maincategories')->with(['success'=>'deleted successfuly']);
 
         } catch (\Exception $exception){
 
