@@ -22,8 +22,8 @@
             <div class="card-row">
                 @isset($products)
                     @foreach($products as $product)
-                <div class="card">
-                    <img class="card-image" src="{{$product->product_img}}" />
+                <div class="card" id="card">
+                    <img class="card-image" id="card-image" src="{{$product->product_img}}" />
 
                     <div class="card-footer">
                         <h3 class="card-title">{{$product->product_name}}</h3>
@@ -32,11 +32,15 @@
                             <span class="card-author">{{$product->product_author}}</span>
                         </p>
                         <p class="card-text">{{$product->product_price}}<span> DH</span></p>
-                        <p>
-                            <a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                Add to Cart</a><br>
-                            <a href="#">Order Now</a>
-                        </p>
+{{--                        <form action="{{'site.cart.add', $product->id}}" method="get" id="paymentForm">--}}
+{{--                            @csrf--}}
+                            <p>
+                                <a href="{{route('site.cart.add', $product->id)}}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    Add to Cart</a><br>
+{{--                                <a href="#">Order Now</a>--}}
+                            </p>
+{{--                        </form>--}}
+
                     </div>
                 </div>
                     @endforeach

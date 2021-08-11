@@ -12,6 +12,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css')}}"/>
+    <link rel="stylesheet" href="{{asset('css/payment.css') }}"/>
+    @stack('styles')
+    <script src="https://js.stripe.com/v3/"></script>
     <title>Dashboard</title>
 </head>
 <body>
@@ -21,6 +24,28 @@
     <div class="main">
 
         @include('user.includes.header')
+        <div class="container">
+            @if (isset($errors) && $errors->any())
+                <div class="alert alert-danger" role="alert">
+                    <ul>
+                        @foreach($errors->all() as $error)
+                            <li>{{$error}}</li>
+                        @endforeach
+                    </ul>
+                    {{ session('status') }}
+                </div>
+            @endif
+            @if (session()->has('success'))
+                <div class="alert alert-success" role="alert">
+                    <ul>
+                        @foreach(session()->get('success') as $message)
+                            <li>{{$message}}</li>
+                        @endforeach
+                    </ul>
+                    {{ session('status') }}
+                </div>
+            @endif
+        </div>
 
         @yield('content')
 
@@ -29,6 +54,7 @@
     </div>
 </div>
 <script src="{{ asset('js/dashboard.js')}}"></script>
+@stack('scripts')
 @yield('script')
 </body>
 </html>

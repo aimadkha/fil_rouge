@@ -1,7 +1,7 @@
 <div class="navigation">
     <ul>
         <li>
-            <a href="#">
+            <a href="{{url('/')}}">
               <span class="icon"
               ><i class="fa fa-book" aria-hidden="true"></i>
 </span>
@@ -27,7 +27,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('site.cart.index')}}">
               <span class="icon">
                   <i class="fa fa-shopping-cart" aria-hidden="true"></i>
               </span>

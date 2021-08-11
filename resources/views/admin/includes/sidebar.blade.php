@@ -1,7 +1,7 @@
 <div class="navigation">
     <ul>
         <li>
-            <a href="#">
+            <a href="{{url('/')}}">
               <span class="icon"
               ><i class="fa fa-book" aria-hidden="true"></i>
 </span>
@@ -80,7 +80,7 @@
                   ></span>
                 <span class="title">Sign Out</span>
             </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            <form id="logout-form" action="{{ route('logout') }}" method="get" class="d-none">
                 @csrf
             </form>
         </li>
