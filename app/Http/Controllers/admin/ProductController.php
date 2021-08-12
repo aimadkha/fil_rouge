@@ -55,12 +55,12 @@ class ProductController extends Controller
                 'product_category'=>$request->category,
                 'product_pub_date'=>$request->pub_date,
             ]);
-            return redirect()->route('admin.products')->with(['success'=>'registred successufly']);
+            return redirect()->route('admin.products')->with(['success'=>'added successufly']);
 
 
         } catch (\Exception $exception){
             return $exception;
-            return redirect()->route('admin.products.create')->with(['error'=>'registred failed! try again']);
+            return redirect()->route('admin.products.create')->with(['error'=>'added failed! try again']);
 
         }
     }

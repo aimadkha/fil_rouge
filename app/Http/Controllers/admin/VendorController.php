@@ -46,10 +46,11 @@ class VendorController extends Controller
                 'category_id' => $request->category
             ]);
             Notification::send($vendor, new VenderCreated($vendor));
-            return redirect()->route('admin.vendors')->with(['success' => 'registred successufly']);
+            return redirect()->route('admin.vendors')->with(['success' => 'added successufly']);
 
         } catch (\Exception $ex) {
-            return redirect()->route('admin.vendors.create')->with(['error' => 'registred failed! try again']);
+//            return $ex;
+            return redirect()->route('admin.vendors.create')->with(['error' => 'added failed! please try again']);
         }
 
     }
