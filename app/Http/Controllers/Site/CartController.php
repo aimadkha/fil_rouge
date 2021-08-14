@@ -59,13 +59,45 @@ class CartController extends Controller
         ];
         session()->put('cart', $cart);
         // start store order
-        $order = new Order();
-        $order->cart = serialize($cart);
-        $order->payment_id = $cart[$id];
-
-        Auth::user()->orders()->save($order);
+//        $order = new Order();
+//        $order->cart = serialize($cart);
+//        $order->payment_id = $cart[$id];
+//
+//        Auth::user()->orders()->save($order);
         // end store order
         return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
+    public function update(Request $request)
+    {
+//        return $request;
+        if($request->id and $request->quantity)
+        {
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
+            return redirect()->back()->with(['success'=>'updated successfully']);
+        }
+    }
+
+    public function remove(Request $request)
+    {
+//        return $request;
+        if($request) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            $request->session()->forget('cart');
+            return redirect()->back();
+//            $request->session()->forget(['name', 'status']);
+//            $request->session()->flush('success', 'Product removed successfully');
+        }
+        else{
+            return "failed";
+        }
     }
 
     public function pay(Request $request)

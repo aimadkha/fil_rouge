@@ -54,7 +54,7 @@
     </div>
 </div>
 <script src="{{ asset('js/dashboard.js')}}"></script>
-@stack('scripts')
+{{--@stack('scripts')--}}
 @yield('script')
 </body>
 </html>

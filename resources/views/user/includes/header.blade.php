@@ -7,7 +7,7 @@
         </label>
     </div>
     <div class="user">
-        <img src="{{ asset('images/user.jpeg')}}" alt="user image"/>
+        <img src="{{ asset('images/user.png')}}" alt="user image"/>
     </div>
 </div>
 

@@ -32,8 +32,8 @@ Route::group(['prefix' => 'site', 'middleware'=>'auth:web'], function () {
         Route::get('/approval', 'CartController@approval')->name('approval');
         Route::get('/cancelled', 'CartController@cancelled')->name('cancelled');
         Route::get('add/{id}', 'CartController@addToCart')->name('site.cart.add');
-        Route::post('/update/{slug}', 'CartController@postUpdate')->name('site.cart.update');
-        Route::post('/update-all', 'CartController@postUpdateAll')->name('site.cart.update-all');
+        Route::get('update-cart', 'CartController@update')->name('site.cart.update');
+        Route::get('remove-from-cart', 'CartController@remove')->name('site.cart.remove');
 //        Route::get('/stripe-payment',[\App\Http\Controllers\StripeController::class, 'handleGet']);
         Route::post('/stripe-payment',[\App\Http\Controllers\StripeController::class, 'handlePost'])->name('stripe.payment');
     });

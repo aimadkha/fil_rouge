@@ -6,7 +6,7 @@
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Shopping Cart</h2>
-                <a href="{{ route('admin.maincategories.create') }}" class="btnn">Add Category</a>
+{{--                <a href="{{ route('admin.maincategories.create') }}" class="btnn">Add Category</a>--}}
             </div>
             <table class="table">
                 <thead>
@@ -34,12 +34,7 @@
                             <td>{{ $details['price'] * $details['quantity']  }}</td>
                             <?php $total += $details['price'] * $details['quantity'] ?>
                             <td>
-                                <a href="">
-                                    <button class="btn btn-success">Edit</button>
-                                </a>
-                                <a href="">
-                                    <button class="btn btn-danger">Delete</button>
-                                </a>
+                                <button class="btn btn-info btn-sm update-cart" onclick="window.location.reload()" data-id="{{ $id }}"><i class="fa fa-refresh"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -47,9 +42,9 @@
                 </tbody>
             </table>
             <div class="cardHeader">
-                <h2>Shopping Cart</h2>
-                <a href="{{ route('admin.maincategories.create') }}" class="btnn">Check Out</a>
-                <a href="{{ route('admin.maincategories.create') }}" class="btnn">Update</a>
+
+                <a href="{{route('site.cart.remove')}}"> <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button></a>
+
             </div>
 
         </div>
@@ -249,6 +244,46 @@
     {{--    end form for stripe payment--}}
 @endsection
 @section('script')
+{{--@section('scripts')--}}
+
+
+    <script type="text/javascript">
+
+        $(".update-cart").click(function (e) {
+            e.preventDefault();
+
+            var ele = $(this);
+
+            $.ajax({
+                url: '{{ url('site/cart/update-cart') }}',
+                method: "patch",
+                data: {_token: '{{ csrf_token() }}', id: ele.attr("data-id"), quantity: ele.parents("tr").find(".quantity").val()},
+                success: function (response) {
+                    window.location.reload();
+                }
+            });
+        });
+
+        $(".remove-from-cart").click(function (e) {
+            e.preventDefault();
+
+            var ele = $(this);
+
+            if(confirm("Are you sure")) {
+                $.ajax({
+                    url: '{{ route('site.cart.remove') }}',
+                    method: "DELETE",
+                    data: {_token: '{{ @csrf_token() }}', id: ele.attr("data-id")},
+                    success: function (response) {
+                        window.location.reload();
+                    }
+                });
+            }
+        });
+
+    </script>
+
+@endsection
     {{--    <script>--}}
     {{--        var stripe = Stripe('pk_test_51JLyPJFmm8Uz9to12hbSddRW6mQEMH7dDNZCpGB2kVHGVtKkfYPn4shkVmk40uxGQ5bbIl7YFkH3q4Gx1EoaNq4v00ZqmMEIVH');--}}
 
@@ -336,4 +371,4 @@
     {{--            registerElements([cardNumber, cardExpiry, cardCvc], 'example2');--}}
     {{--        })();--}}
     {{--    </script>--}}
-@endsection
+{{--@endsection--}}
